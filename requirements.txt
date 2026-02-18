@@ -1,4 +1,5 @@
 fastapi
-uvicorn
 sqlalchemy
 asyncpg
+uvicorn
+python-dotenv  # if you use .env
