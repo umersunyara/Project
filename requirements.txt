@@ -1,5 +1,6 @@
 fastapi
 sqlalchemy
-asyncpg
+asyncpg>=0.27.0
 uvicorn
 python-dotenv  # if you use .env
+SQLAlchemy>=2.0
