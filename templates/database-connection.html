@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Klassifiers — Database Connection</title>
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <link rel="stylesheet" href="{{ url_for('static', path='css/database-connection.css') }}">
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="brand">
+      <img src="{{ url_for('static', path='images/logo.png') }}" alt="Klassifiers logo" />
+      <div class="title">Klassifiers</div>
+    </div>
+
+    <nav class="nav">
+      <a class="link hide-sm" href="/">Home</a>
+      <a class="link hide-sm" href="/pricing">Pricing</a>
+      {% if user %}
+      <a class="signin" href="/chat">Chat</a>
+      <a class="get-started" href="/logout">Sign Out</a>
+      {% else %}
+      <a class="signin" href="/login">Sign In</a>
+      <a class="get-started" href="/signup">Get Started</a>
+      {% endif %}
+
+      <button class="hamburger" id="hamburger" aria-expanded="false">
+        <span class="bar"><i class="fas fa-bars"></i></span>
+      </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#">Home</a>
+      <a href="#">Pricing</a>
+      <a href="/login">Sign In</a>
+      <a class="cta" href="/signup">Get Started</a>
+    </div>
+  </header>
+
+  <!-- Database Connection Card -->
+  <main class="page-wrap">
+    <div class="container" role="main" aria-labelledby="db-heading">
+      <h2 id="db-heading">Database Connection</h2>
+      <p class="lead">Configure and test a database connection for Klassifiers.</p>
+
+      <form id="dbForm" novalidate>
+        <!-- DB TYPE -->
+        <div class="form-group">
+          <label for="dbType">Database Type</label>
+          <div class="input-with-icon">
+            <i class="fas fa-database icon-left"></i>
+            <select id="dbType" class="form-control" required>
+              <option value="">Select database type</option>
+              <option value="mssql">SQL Server</option>
+              <option value="postgresql">PostgreSQL</option>
+              <option value="mysql">MySQL</option>
+            </select>
+          </div>
+          <div class="error" id="dbTypeError">Please select a database type.</div>
+        </div>
+
+        <!-- HOST -->
+        <div class="form-group">
+          <label for="host">Host</label>
+          <div class="input-with-icon">
+            <i class="fas fa-server icon-left"></i>
+            <input id="host" class="form-control" type="text"
+                   placeholder="e.g. localhost, 127.0.0.1, db.example.com" required>
+          </div>
+          <div class="error" id="hostError">
+            Please enter a valid host (localhost, IP, or domain).
+          </div>
+        </div>
+
+        <!-- PORT -->
+        <div class="form-group">
+          <label for="port">Port</label>
+          <div class="input-with-icon">
+            <i class="fas fa-plug icon-left"></i>
+            <input id="port" class="form-control" type="number"
+                   placeholder="e.g. 5432" required>
+          </div>
+          <div class="hint-text">Common ports: SQL Server 1433, PostgreSQL 5432, MySQL 3306.</div>
+          <div class="error" id="portError">
+            Port must be a number between 1 and 65535.
+          </div>
+        </div>
+
+        <!-- DATABASE NAME -->
+        <div class="form-group">
+          <label for="dbName">Database Name</label>
+          <div class="input-with-icon">
+            <i class="fas fa-layer-group icon-left"></i>
+            <input id="dbName" class="form-control" type="text"
+                   placeholder="Enter database name" required>
+          </div>
+          <div class="error" id="dbNameError">Database name is required.</div>
+        </div>
+
+        <!-- USERNAME -->
+        <div class="form-group">
+          <label for="username">Username</label>
+          <div class="input-with-icon">
+            <i class="fas fa-user icon-left"></i>
+            <input id="username" class="form-control" type="text"
+                   placeholder="Enter database username" required>
+          </div>
+          <div class="error" id="usernameError">Username is required.</div>
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="input-with-icon">
+            <i class="fas fa-lock icon-left"></i>
+            <input id="password" class="form-control" type="password"
+                   placeholder="Enter database password" required>
+            <i class="fas fa-eye toggle-password" data-target="password" title="Show/Hide"></i>
+          </div>
+          <div class="error" id="passwordError">Password is required.</div>
+        </div>
+
+        <!-- BUTTONS -->
+        <div class="button-row">
+          <button type="button" class="button-secondary" id="testConnection">
+            Test Connection
+          </button>
+          <button type="submit" class="button-primary" id="saveConnection">
+            Save Connection
+          </button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    © 2025 Klassifiers. All rights reserved.
+  </footer>
+
+  <script src="{{ url_for('static', path='js/database-connection.js') }}"></script>
+</body>
+</html>

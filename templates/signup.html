@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Klassifiers — Sign Up</title>
+
+  <!-- Font Awesome CDN -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+
+  <!-- Local CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', path='css/signup.css') }}">
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="brand">
+      <img src="{{ url_for('static', path='images/logo.png') }}" alt="Klassifiers logo" />
+      <div class="title">Klassifiers</div>
+    </div>
+
+    <nav class="nav">
+      <a class="link hide-sm" href="/">Home</a>
+      <a class="link hide-sm" href="/pricing">Pricing</a>
+      <a class="signin" href="/login">Sign In</a>
+      <a class="get-started" href="/signup">Get Started</a>
+
+      <button class="hamburger" id="hamburger" aria-expanded="false" type="button">
+        <span class="bar"><i class="fas fa-bars"></i></span>
+      </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="/">Home</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/login">Sign In</a>
+      <a class="cta" href="/signup">Get Started</a>
+    </div>
+  </header>
+
+  <!-- Signup Card -->
+  <main class="page-wrap">
+    <div class="container">
+      <h2>Create Account</h2>
+
+      <form id="signupForm">
+
+        <!-- FIRST NAME -->
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <div class="input-with-icon">
+            <i class="fas fa-user icon-left"></i>
+            <input id="firstName" class="form-control" type="text" placeholder="Enter your first name" required>
+          </div>
+        </div>
+
+        <!-- LAST NAME -->
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <div class="input-with-icon">
+            <i class="fas fa-user icon-left"></i>
+            <input id="lastName" class="form-control" type="text" placeholder="Enter your last name" required>
+          </div>
+        </div>
+
+        <!-- EMAIL -->
+        <div class="form-group">
+          <label for="email">Email</label>
+          <div class="input-with-icon">
+            <i class="fas fa-envelope icon-left"></i>
+            <input id="email" class="form-control" type="email" placeholder="Enter your email" required>
+          </div>
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="input-with-icon">
+            <i class="fas fa-lock icon-left"></i>
+            <input
+              id="password"
+              class="form-control"
+              type="password"
+              placeholder="Create a password"
+              required
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$"
+              title="Password must be at least 8 characters long and include uppercase, lowercase, and number."
+            >
+            <i class="fas fa-eye toggle-password" data-target="password"></i>
+          </div>
+        </div>
+
+        <ul id="passwordRules" class="password-rules">
+          <li class="rule" id="rule-length">At least 8 characters</li>
+          <li class="rule" id="rule-upper">One uppercase letter</li>
+          <li class="rule" id="rule-lower">One lowercase letter</li>
+          <li class="rule" id="rule-number">One number</li>
+        </ul>
+
+        <!-- CONFIRM PASSWORD -->
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <div class="input-with-icon">
+            <i class="fas fa-lock icon-left"></i>
+            <input
+              id="confirmPassword"
+              class="form-control"
+              type="password"
+              placeholder="Re-enter your password"
+              required
+            >
+            <i class="fas fa-eye toggle-password" data-target="confirmPassword"></i>
+          </div>
+        </div>
+
+        <button type="submit">Sign Up</button>
+
+        <p class="already">
+          Already have an account?
+          <a href="/login">Login</a>
+        </p>
+
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    © 2025 Klassifiers. All rights reserved.
+  </footer>
+
+  <!-- Local JS -->
+  <script src="{{ url_for('static', path='js/signup.js') }}"></script>
+</body>
+</html>
